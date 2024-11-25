@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "73761e98-0fca-4186-914f-4b79802d70d1",
+		"name": "Model Serving System",
+		"description": "# Introduction\n\nThis collection is designed to interact with the Model Serving API, enabling you to perform predictions using trained machine learning models. The API supports multiple models and their versions, each tailored for specific input constraints and use cases.\n\n# **Supported Models:**\n\n1\\. **Logistic Regression**\n\n**Version v1**:\n\n- **Inputs**: income (integer), loan (integer)\n    \n- **Accuracy**: 85%\n    \n\nV**ersion v2**:\n\n- **Inputs**: age (integer), loan (integer)\n    \n- **Accuracy**: 92%\n    \n\n2\\. **XGBoost**\n\n**Version v1**:\n\n- **Inputs**: income (integer), age (integer), loan (integer)\n    \n- **Accuracy**: 99%\n    \n\n# **Key Features:**\n\n- **Model Versioning**: Specify the desired model and version for predictions.\n    \n- **Dynamic Input Validation**: Automatically checks if your input data meets the model’s constraints.\n    \n- **Caching**: Responses are cached for better performance.\n    \n- **Monitoring**: Integrated with Prometheus and Grafana for performance and metrics tracking.\n    \n\n# **How to Use:**\n\n1. Choose the desired model and version for predictions.\n    \n2. Ensure your input data matches the required fields and constraints.\n    \n3. Send a POST request to the /predict/{model_type}/{version} endpoint with your input data.\n    \n\nUse this collection to explore, test, and utilize the API’s powerful model-serving capabilities seamlessly :)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39980374"
+	},
+	"item": [
+		{
+			"name": "Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict-BestModel",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "\"5678f16d-39e4-4dac-ad33-6224ba0f1ed9\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\": 14542,\n    \"age\": 18,\n    \"loan\": 5654\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/predict",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"predict"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict-EspecificModel-XGBoost",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "\"5678f16d-39e4-4dac-ad33-6224ba0f1ed9\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\": 14542,\n    \"age\": 18,\n    \"loan\": 55645\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/predict/XGBoost/v1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"predict",
+						"XGBoost",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict-EspecificModel-LogisticReg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "\"5678f16d-39e4-4dac-ad33-6224ba0f1ed9\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"income\": 18,\n    \"loan\": 565\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/predict/Logistic_Regression/v1",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"predict",
+						"Logistic_Regression",
+						"v1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Logs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "\"5678f16d-39e4-4dac-ad33-6224ba0f1ed9\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/logs?n_limit=10",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"logs"
+					],
+					"query": [
+						{
+							"key": "n_limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Local Models",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "\"5678f16d-39e4-4dac-ad33-6224ba0f1ed9\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/delete-models",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"delete-models"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

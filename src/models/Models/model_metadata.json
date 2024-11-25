@@ -1,0 +1,42 @@
+{
+    "Logistic_Regression": [
+      {
+        "version": "v1",
+        "type": "Logistic_Regression",
+        "file": "ModelDefault_Logistic:v1.pkl",
+        "accuracy": 0.85,
+        "created_at": "2024-11-24",
+        "status": "active",
+        "inputs": {"income": "int", "loan": "int"},
+        "inputs_constrains": {"income": {"min": 20014, "max": 69996},
+                              "loan": {"min": 1, "max": 13767}
+                            }
+       },
+       {
+        "version": "v2",
+        "type": "Logistic_Regression",
+        "file": "ModelDefault_Logistic:v2.pkl",
+        "accuracy": 0.92,
+        "created_at": "2024-11-24",
+        "status": "active",
+        "inputs": {"age": "int", "loan": "int"},
+        "inputs_constrains": {"age": {"min": 18, "max": 64},
+                              "loan": {"min": 1, "max": 13767}
+                            }
+       }
+      ],
+      "XGBoost": [{
+        "version": "v1",
+        "type": "XGBoost",
+        "file": "ModelDefault_XGBoost:v1.pkl",
+        "accuracy": 0.99,
+        "created_at": "2024-11-25",
+        "status": "active",
+        "inputs": {"income": "int", "age": "int", "loan": "int"},
+        "inputs_constrains": {"income": {"min": 20014, "max": 69996},
+                              "age": {"min": 18, "max": 64},
+                              "loan": {"min": 1, "max": 13767}
+                            }
+      }
+    ]
+  }
